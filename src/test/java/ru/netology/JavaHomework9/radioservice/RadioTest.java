@@ -1,3 +1,4 @@
+package ru.netology.JavaHomework9.radioservice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -140,4 +141,5 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
 }

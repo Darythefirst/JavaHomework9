@@ -1,13 +1,20 @@
+package ru.netology.JavaHomework9.radioservice;
+
 public class Radio {
     private int radioNum;
     private int volume;
+    public int radioMin = 0;
+    public int radioMax = 9;
+
+    public int volumeMin = 0;
+    public int volumeMax = 10;
 
     public int getRadioNum() {
         return radioNum;
     }
 
     public void setRadioNum(int newRadioNum) {
-        if (newRadioNum < 0 || newRadioNum > 9) {
+        if (newRadioNum < radioMin || newRadioNum > radioMax) {
             return;
         } else radioNum = newRadioNum;
     }
@@ -17,8 +24,10 @@ public class Radio {
     }
 
     public void setVolume(int newVolume) {
-        if (newVolume < 0 || newVolume > 10) {
-            return;
+        if (newVolume <= volumeMin) {
+            volume = volumeMin;
+        } else if (newVolume >= volumeMax) {
+            volume = volumeMax;
         } else volume = newVolume;
     }
 
@@ -37,13 +46,12 @@ public class Radio {
     public void volumePlus() {
         if (volume < 10) {
             volume = volume + 1;
-        }
-        return;
+        } else volume = 10;
     }
 
     public void volumeMinus() {
         if (volume > 0) {
             volume = volume - 1;
-        }
+        } else volume = 0;
     }
 }
