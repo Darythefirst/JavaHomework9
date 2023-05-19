@@ -1,5 +1,13 @@
 package ru.netology.JavaHomework9.radioservice;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 public class Radio {
     private int radioSize = 10;
     private int radioNum;
@@ -10,6 +18,7 @@ public class Radio {
     private int volumeMin = 0;
     private int volumeMax = 100;
 
+
     public Radio(int radioSize) {
         if (radioSize > 0) {
             this.radioSize = radioSize;
@@ -17,43 +26,35 @@ public class Radio {
         }
     }
 
-    public Radio() {
-        this.radioSize = getRadioSize();
-    }
-
     public int getRadioSize() {
         return radioSize;
-    }
-//    public void setRadioSize (int newRadioSize) {
-//        if (newRadioSize > 0) {
-//            radioSize = newRadioSize;
-//        }
-//    }
-
-    public int getRadioMax() {
-        return radioMax;
     }
 
     public int getRadioNum() {
         return radioNum;
     }
 
-    public void setRadioNum(int newRadioNum) {
-        if (newRadioNum < radioMin || newRadioNum > radioMax) {
+    public void setRadioNum(int radioNum) {
+        if (radioNum < radioMin || radioNum > radioMax) {
             return;
-        } else radioNum = newRadioNum;
+        } else this.radioNum = radioNum;
+        ;
     }
 
     public int getVolume() {
         return volume;
     }
 
-    public void setVolume(int newVolume) {
-        if (newVolume <= volumeMin) {
-            volume = volumeMin;
-        } else if (newVolume >= volumeMax) {
-            volume = volumeMax;
-        } else volume = newVolume;
+    public void setVolume(int volume) {
+        if (volume <= volumeMin) {
+            this.volume = volumeMin;
+        } else if (volume >= volumeMax) {
+            this.volume = volumeMax;
+        } else this.volume = volume;
+    }
+
+    public int getRadioMax() {
+        return radioMax;
     }
 
     public void nextRadioNum() {
