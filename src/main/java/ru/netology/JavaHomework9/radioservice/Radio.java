@@ -24,11 +24,6 @@ public class Radio {
     public int getRadioSize() {
         return radioSize;
     }
-//    public void setRadioSize (int newRadioSize) {
-//        if (newRadioSize > 0) {
-//            radioSize = newRadioSize;
-//        }
-//    }
 
     public int getRadioMax() {
         return radioMax;
@@ -41,7 +36,9 @@ public class Radio {
     public void setRadioNum(int newRadioNum) {
         if (newRadioNum < radioMin || newRadioNum > radioMax) {
             return;
-        } else radioNum = newRadioNum;
+        } else {
+            radioNum = newRadioNum;
+        }
     }
 
     public int getVolume() {
@@ -53,30 +50,40 @@ public class Radio {
             volume = volumeMin;
         } else if (newVolume >= volumeMax) {
             volume = volumeMax;
-        } else volume = newVolume;
+        } else {
+            volume = newVolume;
+        }
     }
 
     public void nextRadioNum() {
         if (radioNum < radioMax) {
             radioNum = radioNum + 1;
-        } else radioNum = radioMin;
+        } else {
+            radioNum = radioMin;
+        }
     }
 
     public void prevRadioNum() {
         if (radioNum > 0) {
             radioNum = radioNum - 1;
-        } else radioNum = radioMax;
+        } else {
+            radioNum = radioMax;
+        }
     }
 
     public void volumePlus() {
         if (volume < volumeMax) {
             volume = volume + 1;
-        } else volume = volumeMax;
+        } else {
+            volume = volumeMax;
+        }
     }
 
     public void volumeMinus() {
         if (volume > volumeMin) {
             volume = volume - 1;
-        } else volume = volumeMin;
+        } else {
+            volume = volumeMin;
+        }
     }
 }
