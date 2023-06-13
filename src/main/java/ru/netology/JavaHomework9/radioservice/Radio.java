@@ -1,57 +1,78 @@
 package ru.netology.JavaHomework9.radioservice;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 public class Radio {
+    private int radioSize = 10;
     private int radioNum;
     private int volume;
-    public int radioMin = 0;
-    public int radioMax = 9;
+    private int radioMin = 0;
+    private int radioMax = radioSize - 1;
 
-    public int volumeMin = 0;
-    public int volumeMax = 10;
+    private int volumeMin = 0;
+    private int volumeMax = 100;
 
-    public int getRadioNum() {
-        return radioNum;
+
+    public Radio(int radioSize) {
+        if (radioSize > 0) {
+            this.radioSize = radioSize;
+            this.radioMax = radioSize - 1;
+        }
     }
 
-    public void setRadioNum(int newRadioNum) {
-        if (newRadioNum < radioMin || newRadioNum > radioMax) {
+    public void setRadioNum(int radioNum) {
+        if (radioNum < radioMin || radioNum > radioMax) {
             return;
-        } else radioNum = newRadioNum;
+        } else {
+            this.radioNum = radioNum;
+        }
     }
 
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int newVolume) {
-        if (newVolume <= volumeMin) {
-            volume = volumeMin;
-        } else if (newVolume >= volumeMax) {
-            volume = volumeMax;
-        } else volume = newVolume;
+    public void setVolume(int volume) {
+        if (volume <= volumeMin) {
+            this.volume = volumeMin;
+        } else if (volume >= volumeMax) {
+            this.volume = volumeMax;
+        } else {
+            this.volume = volume;
+        }
     }
 
     public void nextRadioNum() {
-        if (radioNum < 9) {
+        if (radioNum < radioMax) {
             radioNum = radioNum + 1;
-        } else radioNum = 0;
+        } else {
+            radioNum = radioMin;
+        }
     }
 
     public void prevRadioNum() {
         if (radioNum > 0) {
             radioNum = radioNum - 1;
-        } else radioNum = 9;
+        } else {
+            radioNum = radioMax;
+        }
     }
 
     public void volumePlus() {
-        if (volume < 10) {
+        if (volume < volumeMax) {
             volume = volume + 1;
-        } else volume = 10;
+        } else {
+            volume = volumeMax;
+        }
     }
 
     public void volumeMinus() {
-        if (volume > 0) {
+        if (volume > volumeMin) {
             volume = volume - 1;
-        } else volume = 0;
+        } else {
+            volume = volumeMin;
+        }
     }
 }
